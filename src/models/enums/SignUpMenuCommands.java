@@ -3,28 +3,24 @@ package models.enums;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public enum SignUpMenuCommands {
-    Register("register\\s+username\\s+(?<username>\\S+)\\s+password\\s+(?<password>\\S+)\\s+email\\s+(?<email>\\S+@\\S+)"),
-    Login("login\\s+username\\s+(?<username>\\S+)\\s+password\\s+(?<password>\\S+)"),
-    Username("[a-zA-Z_]+"),
-    Password("(?=.*[@#$^&!]).+"),
-    PasswordStart("[a-zA-Z].+"),
-    EmailDomain("\\S+@[a-z]+\\.com"),
-    EmailAddress("[a-zA-Z\\d.]+@\\S+"),
-    ShowMenu("show\\s+current\\s+menu"),
-    Exit("exit");
+public enum SignUpMenuCommands implements Command {
+    REGISTER("register\\s+-u\\s+(?<username>\\S+)\\s+-p\\s+(?<password>\\S+)\\s+-e\\s+(?<email>\\S+)\\s+-n\\s+(?<name>\\S+)"),
+    USERNAME("[a-zA-Z][a-zA-Z0-9_\\-\\.]{3,9}"),
+    PASSWORD("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{6,12}"),
+    EMAIL("(?<user>\\S+)@(?<domain>\\S+)\\.(?<TLD>\\S+)"),
+    NAME("[a-zA-Z]+(-[a-zA-Z]+)*"),
+    DOMAIN("[A-Za-z]([a-zA-Z\\-\\.]{1,5})[A-Za-z]"),
+    TLD("(org|net|edu|com)"),
+    GO_TO_LOGIN_MENU("go\\s+to\\s+login\\s+menu"),
+    EXIT("exit");
     private final String pattern;
 
     SignUpMenuCommands(String pattern) {
         this.pattern = pattern;
     }
 
-    public Matcher getMather(String input) {
-        Matcher matcher = Pattern.compile(this.pattern).matcher(input);
-
-        if (matcher.matches()) {
-            return matcher;
-        }
-        return null;
+    @Override
+    public String getPattern() {
+        return this.pattern;
     }
 }

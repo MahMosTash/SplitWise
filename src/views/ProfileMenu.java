@@ -1,46 +1,56 @@
 package views;
 
-import controllers.MainMenuController;
 import controllers.ProfileMenuController;
-import models.enums.MainMenuCommands;
+import models.App;
+import models.enums.Menu;
 import models.enums.ProfileMenuCommands;
-import models.Game;
 import models.Result;
 
 import java.util.Scanner;
-import java.util.regex.Matcher;
 
 public class ProfileMenu implements AppMenu {
-    private final ProfileMenuController menuController = new ProfileMenuController();
 
     @Override
     public void check(Scanner scanner) {
         String input = scanner.nextLine().trim();
-        Matcher matcher;
-        if ((ProfileMenuCommands.ShowCoins.getMather(input)) != null) {
-            System.out.println(menuController.showCoins());
-        } else if (ProfileMenuCommands.ShowExperience.getMather(input) != null) {
-            System.out.println(menuController.showExperience());
-        } else if (ProfileMenuCommands.ShowStorage.getMather(input) != null) {
-            Result result = menuController.showStorage();
-            if (result.isSuccessful()) System.out.println(result);
-        } else if (ProfileMenuCommands.ShowDeck.getMather(input) != null) {
-            Result result = menuController.showDeck();
-            if (result.isSuccessful()) System.out.println(result);
-        } else if ((matcher = ProfileMenuCommands.EquipCard.getMather(input)) != null) {
-            System.out.println(menuController.equipCard(matcher.group("name")));
-        } else if ((matcher = ProfileMenuCommands.UnEquipCard.getMather(input)) != null) {
-            System.out.println(menuController.unEquipCard(matcher.group("name")));
-        } else if (ProfileMenuCommands.ShowRank.getMather(input) != null) {
-            System.out.println(menuController.showRank());
-        } else if (ProfileMenuCommands.ShowRanking.getMather(input) != null) {
-            System.out.println(menuController.showRanking());
-        } else if (ProfileMenuCommands.ShowMenu.getMather(input) != null) {
-            System.out.println("profile menu");
-        } else if (ProfileMenuCommands.Back.getMather(input) != null) {
-            menuController.back();
-        } else {
-            System.out.println("invalid command");
+
+        if (ProfileMenuCommands.SHOW_USER_INFO.matches(input)) {
+            handleShowUserInfo(input);
+        } else if (ProfileMenuCommands.CHANGE_CURRENCY.matches(input)) {
+            handleChangeCurrency(input);
+        } else if (ProfileMenuCommands.CHANGE_USERNAME.matches(input)) {
+            handleUsernameChange(input);
+        } else if (ProfileMenuCommands.CHANGE_PASSWORD.matches(input)) {
+            handlePasswordChange(input);
+        } else if (ProfileMenuCommands.Back.matches(input)) {
+            App.setCurrentMenu(Menu.Dashboard);
+        } else if(ProfileMenuCommands.EXIT.matches(input)) {
+            App.setCurrentMenu(Menu.Exit);
+        }
+        else {
+            invalidCommand();
         }
     }
+
+    private void handleShowUserInfo(String input) {
+        Result result = ProfileMenuController.getUserInfo();
+        System.out.println(result.getMessage());
+    }
+    private void handleChangeCurrency(String input) {
+        String currency = ProfileMenuCommands.CHANGE_CURRENCY.getGroup(input, "currency");
+        Result result = ProfileMenuController.changeCurrency(currency);
+        System.out.println(result.getMessage());
+    }
+    private void handleUsernameChange(String input) {
+        String username = ProfileMenuCommands.CHANGE_USERNAME.getGroup(input, "username");
+        Result result = ProfileMenuController.changeUsername(username);
+        System.out.println(result.getMessage());
+    }
+    private void handlePasswordChange(String input) {
+        String oldPassword = ProfileMenuCommands.CHANGE_PASSWORD.getGroup(input, "oldPassword");
+        String newPassword = ProfileMenuCommands.CHANGE_PASSWORD.getGroup(input, "newPassword");
+        Result result = ProfileMenuController.changePassword(oldPassword, newPassword);
+        System.out.println(result.getMessage());
+    }
+
 }
