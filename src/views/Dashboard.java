@@ -18,7 +18,7 @@ public class Dashboard implements AppMenu {
             App.setCurrentMenu(Menu.Exit);
         } else if(DashboardCommands.SHOW_MY_GROUPS.matches(input)) {
             Result result = DashboardController.showMyGroups();
-            System.out.println(result.getMessage());
+            System.out.println(result.message());
         } else if(DashboardCommands.ADD_USER.matches(input)) {
             handleAddUser(input);
         } else if(DashboardCommands.ADD_EXPENSE.matches(input)) {
@@ -38,7 +38,7 @@ public class Dashboard implements AppMenu {
         String type = DashboardCommands.CREATE_GROUP.getGroup(input, "type");
 
         Result result = DashboardController.createGroup(name, type);
-        System.out.println(result.getMessage());
+        System.out.println(result.message());
     }
     public void handleAddUser(String input) {
         String username = DashboardCommands.ADD_USER.getGroup(input, "username");
@@ -46,7 +46,7 @@ public class Dashboard implements AppMenu {
         String groupName = DashboardCommands.ADD_USER.getGroup(input, "groupName").trim();
 
         Result result = DashboardController.addUser(username, email, groupName);
-        System.out.println(result.getMessage());
+        System.out.println(result.message());
     }
     public void handleAddExpense(String input) {
         //TODO: Implement this method

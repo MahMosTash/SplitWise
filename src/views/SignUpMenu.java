@@ -7,7 +7,6 @@ import models.Result;
 import models.enums.SignUpMenuCommands;
 import models.enums.Menu;
 import java.util.Scanner;
-import java.util.regex.Matcher;
 
 public class SignUpMenu implements AppMenu {
     @Override
@@ -29,8 +28,8 @@ public class SignUpMenu implements AppMenu {
         String email = SignUpMenuCommands.REGISTER.getGroup(input, "email");
         String name = SignUpMenuCommands.REGISTER.getGroup(input, "name");
         Result result = SignUpMenuController.register(username, password, email, name);
-        System.out.println(result.getMessage());
-        if(result.isSuccess()) {
+        System.out.println(result.message());
+        if(result.success()) {
             App.setCurrentMenu(Menu.LoginMenu);
         }
     }

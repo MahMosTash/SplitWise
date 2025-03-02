@@ -1,7 +1,5 @@
 package models.enums;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public enum LoginMenuCommands implements Command {
     LOGIN("login\\s+-u\\s+(?<username>\\S+)\\s+-p\\s+(?<password>\\S+)"),

@@ -7,7 +7,6 @@ import models.enums.LoginMenuCommands;
 import models.enums.Menu;
 
 import java.util.Scanner;
-import java.util.regex.Matcher;
 
 public class LoginMenu implements AppMenu {
     @Override
@@ -30,8 +29,8 @@ public class LoginMenu implements AppMenu {
         String password = LoginMenuCommands.LOGIN.getGroup(input, "password");
 
         Result loginResult = LoginMenuController.login(username, password);
-        System.out.println(loginResult.getMessage());
-        if(loginResult.isSuccess()) {
+        System.out.println(loginResult.message());
+        if(loginResult.success()) {
             App.setCurrentMenu(Menu.Dashboard);
         }
     }
@@ -40,6 +39,6 @@ public class LoginMenu implements AppMenu {
         String email = LoginMenuCommands.FORGET_PASSWORD.getGroup(input, "email");
 
         Result forgetPasswordResult = LoginMenuController.forgetPassword(username, email);
-        System.out.println(forgetPasswordResult.getMessage());
+        System.out.println(forgetPasswordResult.message());
     }
 }

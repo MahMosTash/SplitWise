@@ -34,23 +34,23 @@ public class ProfileMenu implements AppMenu {
 
     private void handleShowUserInfo(String input) {
         Result result = ProfileMenuController.getUserInfo();
-        System.out.println(result.getMessage());
+        System.out.println(result.message());
     }
     private void handleChangeCurrency(String input) {
         String currency = ProfileMenuCommands.CHANGE_CURRENCY.getGroup(input, "currency");
         Result result = ProfileMenuController.changeCurrency(currency);
-        System.out.println(result.getMessage());
+        System.out.println(result.message());
     }
     private void handleUsernameChange(String input) {
         String username = ProfileMenuCommands.CHANGE_USERNAME.getGroup(input, "username");
         Result result = ProfileMenuController.changeUsername(username);
-        System.out.println(result.getMessage());
+        System.out.println(result.message());
     }
     private void handlePasswordChange(String input) {
         String oldPassword = ProfileMenuCommands.CHANGE_PASSWORD.getGroup(input, "oldPassword");
         String newPassword = ProfileMenuCommands.CHANGE_PASSWORD.getGroup(input, "newPassword");
         Result result = ProfileMenuController.changePassword(oldPassword, newPassword);
-        System.out.println(result.getMessage());
+        System.out.println(result.message());
     }
 
 }
