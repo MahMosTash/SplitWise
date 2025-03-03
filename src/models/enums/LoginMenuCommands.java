@@ -1,30 +1,20 @@
 package models.enums;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public enum LoginMenuCommands {
-    Register("register\\s+username\\s+(?<username>\\S+)\\s+password\\s+(?<password>\\S+)\\s+email\\s+(?<email>\\S+@\\S+)"),
-    Login("login\\s+username\\s+(?<username>\\S+)\\s+password\\s+(?<password>\\S+)"),
-    Username("[a-zA-Z_]+"),
-    Password("(?=.*[@#$^&!]).+"),
-    PasswordStart("[a-zA-Z].+"),
-    EmailDomain("\\S+@[a-z]+\\.com"),
-    EmailAddress("[a-zA-Z\\d.]+@\\S+"),
-    ShowMenu("show\\s+current\\s+menu"),
+public enum LoginMenuCommands implements Command {
+    LOGIN("login\\s+-u\\s+(?<username>\\S+)\\s+-p\\s+(?<password>\\S+)"),
+    FORGET_PASSWORD("forget-password\\s+-u\\s+(?<username>\\S+)\\s+-e\\s+(?<email>\\S+)"),
+    GO_TO_SIGN_UP_MENU("go\\s+to\\s+sign\\s+up\\s+menu"),
     Exit("exit");
+
     private final String pattern;
 
     LoginMenuCommands(String pattern) {
         this.pattern = pattern;
     }
 
-    public Matcher getMather(String input) {
-        Matcher matcher = Pattern.compile(this.pattern).matcher(input);
-
-        if (matcher.matches()) {
-            return matcher;
-        }
-        return null;
+    @Override
+    public String getPattern() {
+        return this.pattern;
     }
 }

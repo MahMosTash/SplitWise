@@ -3,17 +3,14 @@ package models.enums;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public enum ProfileMenuCommands {
-    ShowCoins("show\\s+coins"),
-    ShowExperience("show\\s+experience"),
-    ShowStorage("show\\s+storage"),
-    EquipCard("equip\\s+card\\s+(?<name>\\S+)\\s+to\\s+my\\s+deck"),
-    UnEquipCard("unequip\\s+card\\s+(?<name>\\S+)\\s+from\\s+my\\s+deck"),
-    ShowDeck("show\\s+my\\s+deck"),
-    ShowRank("show\\s+my\\s+rank"),
-    ShowRanking("show\\s+ranking"),
-    ShowMenu("show\\s+current\\s+menu"),
-    Back("back");
+public enum ProfileMenuCommands implements Command {
+    SHOW_USER_INFO("show\\s+user\\s+info"),
+    CHANGE_CURRENCY("change-currency\\s+-n\\s+(?<currency>\\S+)"),
+    CURRENCY("[A-Z]{3}"),
+    CHANGE_USERNAME("change-username\\s+-n\\s+(?<username>\\S+)"),
+    CHANGE_PASSWORD("change-password\\s+-o\\s+(?<oldPassword>\\S+)\\s+-n\\s+(?<newPassword>\\S+)"),
+    Back("back"),
+    EXIT("exit");
 
     private final String pattern;
 
@@ -21,12 +18,8 @@ public enum ProfileMenuCommands {
         this.pattern = pattern;
     }
 
-    public Matcher getMather(String input) {
-        Matcher matcher = Pattern.compile(this.pattern).matcher(input);
-
-        if (matcher.matches()) {
-            return matcher;
-        }
-        return null;
+    @Override
+    public String getPattern() {
+        return this.pattern;
     }
 }
