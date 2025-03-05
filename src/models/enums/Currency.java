@@ -2,7 +2,7 @@ package models.enums;
 
 public enum Currency {
     USD(1, "USD"),
-    IRR(50, "IRR"),
+    IRR(, "IRR"),
     EUR(12, "EUR"),;
 
     // Value of each currency in GBP

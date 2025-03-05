@@ -6,7 +6,10 @@ public enum DashboardCommands implements Command {
     NAME("[a-zA-Z0-9!@#$%^&* ]{4,30}"),
     SHOW_MY_GROUPS("show\\s+my\\s+groups"),
     ADD_USER("add-user\\s+-u\\s+(?<username>\\S+)\\s+-e\\s+(?<email>\\S+)\\s+-g\\s+(?<groupName>.+)"),
-    ADD_EXPENSE("add-expense\\s+-g\\s+(?<groupName>.+)\\s+-t\\s+(?<totalExpense>\\d+)\\s+-e\\s+(?<expenses>.+)"), //TODO: Implement this command
+    EQUAL("equally"),
+    ADD_EXPENSE("add-expense\\s+-s\\s+(?<split>equally|unequally)\\s+-g\\s+(?<groupId>\\d+)\\s+-t\\s+(?<totalExpense>\\S+)\\s+-u\\s+(?<usernames>.+)"),
+    EXPENSE("\\d+"),
+    SHOW_BALANCE("show\\s+balance\\s+-u\\s+(?<username>\\S+)"),
     GO_TO_PROFILE_MENU("go\\s+to\\s+profile\\s+menu"),
     LOGOUT("logout"),
     EXIT("Exit");

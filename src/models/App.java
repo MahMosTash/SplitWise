@@ -49,4 +49,16 @@ public class App {
         }
         return null;
     }
+    public static int getGroupId() {
+        return groups.size() + 1;
+    }
+
+    public static Group getGroupById(int groupId) {
+        for(Group group : groups) {
+            if(group.getId() == groupId) {
+                return group;
+            }
+        }
+        return null;
+    }
 }

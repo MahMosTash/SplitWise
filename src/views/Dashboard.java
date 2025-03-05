@@ -23,6 +23,8 @@ public class Dashboard implements AppMenu {
             handleAddUser(input);
         } else if(DashboardCommands.ADD_EXPENSE.matches(input)) {
             handleAddExpense(input);
+        } else if(DashboardCommands.SHOW_BALANCE.matches(input)) {
+          handleShowBalance(input);
         } else if(DashboardCommands.GO_TO_PROFILE_MENU.matches(input)) {
             App.setCurrentMenu(Menu.ProfileMenu);
         } else if(DashboardCommands.LOGOUT.matches(input)) {
@@ -49,6 +51,18 @@ public class Dashboard implements AppMenu {
         System.out.println(result.message());
     }
     public void handleAddExpense(String input) {
-        //TODO: Implement this method
+        String split = DashboardCommands.ADD_EXPENSE.getGroup(input, "split");
+        int groupId = Integer.parseInt(DashboardCommands.ADD_EXPENSE.getGroup(input, "groupId"));
+        String totalExpense = DashboardCommands.ADD_EXPENSE.getGroup(input, "totalExpense");
+        String usernames = DashboardCommands.ADD_EXPENSE.getGroup(input, "usernames");
+
+        Result result = DashboardController.addExpense(split, groupId, totalExpense, usernames);
+        System.out.println(result.message());
+    }
+    public void handleShowBalance(String input) {
+        String username = DashboardCommands.SHOW_BALANCE.getGroup(input, "username");
+        Result result = DashboardController.getShowBalance(username);
+
+        System.out.println(result.message());
     }
 }
