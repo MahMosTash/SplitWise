@@ -25,7 +25,10 @@ public class Dashboard implements AppMenu {
             handleAddExpense(input);
         } else if(DashboardCommands.SHOW_BALANCE.matches(input)) {
           handleShowBalance(input);
-        } else if(DashboardCommands.GO_TO_PROFILE_MENU.matches(input)) {
+        } else if(DashboardCommands.SETTLE_UP.matches(input)) {
+            handleSettleUp(input);
+        }
+        else if(DashboardCommands.GO_TO_PROFILE_MENU.matches(input)) {
             App.setCurrentMenu(Menu.ProfileMenu);
         } else if(DashboardCommands.LOGOUT.matches(input)) {
             App.setCurrentMenu(Menu.LoginMenu);
@@ -62,6 +65,12 @@ public class Dashboard implements AppMenu {
     public void handleShowBalance(String input) {
         String username = DashboardCommands.SHOW_BALANCE.getGroup(input, "username");
         Result result = DashboardController.getShowBalance(username);
+
+        System.out.println(result.message());
+    }
+    public void handleSettleUp(String input) {
+        String username = DashboardCommands.SETTLE_UP.getGroup(input, "username");
+        Result result = DashboardController.settleUp(username);
 
         System.out.println(result.message());
     }

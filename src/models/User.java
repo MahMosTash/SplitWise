@@ -9,7 +9,7 @@ public class User {
     private String username;
     private final String email;
     private String password;
-    private Currency currency = Currency.USD;
+    private Currency currency = Currency.GTC;
     private final ArrayList<User> friends = new ArrayList<>();
     private final ArrayList<Group> groups = new ArrayList<>();
     private final ArrayList<Expense> demands = new ArrayList<>();

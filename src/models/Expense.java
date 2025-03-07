@@ -15,9 +15,10 @@ public record Expense(Currency currency, int amount, User paidBy, User paidFor, 
 
     }
 
-    public int getAmountInCurrency(Currency currency) {
-        return (int) currency.convertTo(this.currency, this.amount);
+    public User getPaidBy() {
+        return paidBy;
     }
-
-
+    public User getPaidFor() {
+        return paidFor;
+    }
 }

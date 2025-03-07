@@ -59,4 +59,12 @@ public class Group {
     public int getId() {
         return id;
     }
+    public void removeExpense(User paidBy, User PaidFor) {
+        for(Expense expense : expenses) {
+            if(expense.getPaidBy().equals(paidBy) && expense.getPaidFor().equals(PaidFor)) {
+                expenses.remove(expense);
+                break;
+            }
+        }
+    }
 }

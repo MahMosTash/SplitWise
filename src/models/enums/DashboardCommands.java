@@ -10,6 +10,7 @@ public enum DashboardCommands implements Command {
     ADD_EXPENSE("add-expense\\s+-s\\s+(?<split>equally|unequally)\\s+-g\\s+(?<groupId>\\d+)\\s+-t\\s+(?<totalExpense>\\S+)\\s+-u\\s+(?<usernames>.+)"),
     EXPENSE("\\d+"),
     SHOW_BALANCE("show\\s+balance\\s+-u\\s+(?<username>\\S+)"),
+    SETTLE_UP("settle-up\\s+-u\\s+(?<username>\\S+)"),
     GO_TO_PROFILE_MENU("go\\s+to\\s+profile\\s+menu"),
     LOGOUT("logout"),
     EXIT("Exit");

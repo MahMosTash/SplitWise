@@ -167,31 +167,20 @@ public class DashboardController {
         if(user == null) {
             return new Result(false, "user not found!");
         }
-        int debt = 0;
-        int demand = 0;
+
         StringBuilder balance = new StringBuilder();
 
-        ArrayList<Group> groups = new ArrayList<>();
-        for(Expense expense : user.getDebts()) {
-            if(expense.paidFor().equals(user)) {
-                debt += expense.amount();
-                groups.add(expense.group());
-            }
-        }
-        for(Expense expense : user.getDemands()) {
-            if(expense.paidBy().equals(user)) {
-                demand += expense.amount();
-                groups.add(expense.group());
-            }
-        }
-        if(debt > demand) {
-            balance.append("you owe ").append(username).append(" ").append(debt - demand);
-        } else if(debt < demand) {
-            balance.append(username).append(" owes you ").append(demand - debt);
+        int check = getBalance(App.getLoggedInUser(), user);
+
+        if(check < 0) {
+            balance.append("you owe ").append(username).append(" ").append(-check).append(" ").append(App.getLoggedInUser().getCurrency().getCurrency());
+        } else if(check > 0) {
+            balance.append(username).append(" owes you ").append(check).append(" ").append(App.getLoggedInUser().getCurrency().getCurrency());
         } else {
-            balance.append("you are settled with ");
+            balance.append("you are settled with ").append(username);
         }
         balance.append(" in ");
+        ArrayList<Group> groups = getCommonGroups(App.getLoggedInUser(), user);
         for(int i = 0; i < groups.size(); i++) {
             balance.append(groups.get(i).getName());
             if(i != groups.size() - 1) {
@@ -203,6 +192,65 @@ public class DashboardController {
         return new Result(true, balance.toString());
     }
 
+    public static Result settleUp(String username) {
+        User user = App.getUserByUsername(username);
+        if(user == null) {
+            return new Result(false, "user not found!");
+        }
+        int balance = getBalance(App.getLoggedInUser(), user);
+        ArrayList<Group> groups = getCommonGroups(App.getLoggedInUser(), user);
+        settleUpGroups(groups, user, balance);
+        if(balance == 0) {
+            return new Result(true, "you are settled with " + username + " now!");
+        } else if(balance < 0) {
+            return new Result(true, "you owe " + username + " " + -balance + " " + App.getLoggedInUser().getCurrency().getCurrency() + " now!");
+        } else {
+            return new Result(true, username + " owes you " + balance + " " + App.getLoggedInUser().getCurrency().getCurrency() + " now!");
+        }
+    }
+
+    public static void settleUpGroups(ArrayList<Group> groups, User user, int balance) {
+
+        for(Group group : groups) {
+            group.removeExpense(App.getLoggedInUser(), user);
+        }
+        Group lastGroup = groups.getLast();
+        if(balance == 0) {
+            return;
+        }
+
+        if(balance < 0) {
+            Expense expense = new Expense(App.getLoggedInUser().getCurrency(), -balance, App.getLoggedInUser(), user, lastGroup);
+        } else {
+            Expense expense = new Expense(App.getLoggedInUser().getCurrency(), balance, user, App.getLoggedInUser(), lastGroup);
+        }
+    }
+
+    public static int getBalance(User user1, User user2) {
+        int debt = 0;
+        int demand = 0;
+        for(Expense expense : user1.getDebts()) {
+            if(expense.paidFor().equals(user1) && expense.paidBy().equals(user2)) {
+                debt += expense.amount();
+            }
+        }
+        for(Expense expense : user1.getDemands()) {
+            if(expense.paidBy().equals(user1) && expense.paidFor().equals(user2)) {
+                demand += expense.amount();
+            }
+        }
+        return debt - demand;
+    }
+
+    public static ArrayList<Group> getCommonGroups(User user1, User user2) {
+        ArrayList<Group> commonGroups = new ArrayList<>();
+        for(Group group : user1.getGroups()) {
+            if(user2.getGroups().contains(group)) {
+                commonGroups.add(group);
+            }
+        }
+        return commonGroups;
+    }
 
 }
 
