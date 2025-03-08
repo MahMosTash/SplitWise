@@ -79,6 +79,9 @@ public class DashboardController {
             String username = user_expense.keySet().iterator().next();
             int expense = Integer.parseInt(user_expense.get(username));
             User user = App.getUserByUsername(username);
+            if(!DashboardCommands.UNEQUAL.matches(split)) {
+                expense = Integer.parseInt(totalExpense) / user_expense.size();
+            }
             createExpense(App.getLoggedInUser(),user, expense, group);
         }
         return new Result(true, "expense added successfully!");
