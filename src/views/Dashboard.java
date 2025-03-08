@@ -24,7 +24,7 @@ public class Dashboard implements AppMenu {
         } else if(DashboardCommands.ADD_USER.matches(input)) {
             handleAddUser(input);
         } else if(DashboardCommands.ADD_EXPENSE.matches(input)) {
-            handleAddExpense(input);
+            handleAddExpense(input, scanner);
         } else if(DashboardCommands.SHOW_BALANCE.matches(input)) {
           handleShowBalance(input);
         } else if(DashboardCommands.SETTLE_UP.matches(input)) {
@@ -56,13 +56,14 @@ public class Dashboard implements AppMenu {
         Result result = DashboardController.addUser(username, email, groupId);
         System.out.println(result.message());
     }
-    public void handleAddExpense(String input) {
+    public void handleAddExpense(String input, Scanner scanner) {
         String split = DashboardCommands.ADD_EXPENSE.getGroup(input, "split");
         int groupId = Integer.parseInt(DashboardCommands.ADD_EXPENSE.getGroup(input, "groupId"));
         String totalExpense = DashboardCommands.ADD_EXPENSE.getGroup(input, "totalExpense");
         int numberOfUsers = Integer.parseInt(DashboardCommands.ADD_EXPENSE.getGroup(input, "numberOfUsers"));
         ArrayList<Map<String, String>> users_expenses = new ArrayList<>();
         for(int i = 0; i < numberOfUsers; i++) {
+            input = scanner.nextLine().trim();
             String username = DashboardCommands.USER_INPUT_EXPENSE.getGroup(input, "username");
             String expense = "0";
             if(DashboardCommands.UNEQUAL.matches(split)) {

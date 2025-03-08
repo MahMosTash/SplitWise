@@ -72,7 +72,7 @@ public class DashboardController {
         if(!validateExpenses(users_expenses)) {
             return new Result(false, "expense format is invalid!");
         }
-        if(isSumValid(users_expenses, totalExpense)) {
+        if(DashboardCommands.UNEQUAL.matches(split) && isSumValid(users_expenses, totalExpense)) {
             return new Result(false, "the sum of individual costs does not equal the total cost!");
         }
         for(Map<String, String> user_expense : users_expenses) {
@@ -141,8 +141,12 @@ public class DashboardController {
         } else {
             expense.setAmount(expense.getAmount() + amount);
         }
+        explainWhatTheFuckIsGoingOn(paidBy, paidFor, amount, group);
     }
 
+    private static void explainWhatTheFuckIsGoingOn(User paidBy, User paidFor, int amount, Group group) {
+
+    }
 
 
     public static Result getShowBalance(String username) {
@@ -152,15 +156,14 @@ public class DashboardController {
         }
 
         StringBuilder balance = new StringBuilder();
-
         int check = getBalance(App.getLoggedInUser(), user);
-
         if(check < 0) {
             balance.append("you owe ").append(username).append(" ").append(-check).append(" ").append(App.getLoggedInUser().getCurrency().getCurrency());
         } else if(check > 0) {
             balance.append(username).append(" owes you ").append(check).append(" ").append(App.getLoggedInUser().getCurrency().getCurrency());
         } else {
             balance.append("you are settled with ").append(username);
+            return new Result(true, balance.toString());
         }
         balance.append(" in ");
         ArrayList<Group> groups = getCommonGroups(App.getLoggedInUser(), user);
@@ -168,10 +171,10 @@ public class DashboardController {
             balance.append(groups.get(i).getName());
             if(i != groups.size() - 1) {
                 balance.append(", ");
-            } else {
-                balance.append("!");
             }
+
         }
+        balance.append("!");
         return new Result(true, balance.toString());
     }
 
@@ -213,15 +216,16 @@ public class DashboardController {
         int debt = 0;
         int demand = 0;
         for(Expense expense : user1.getDebts()) {
-            if(expense.getPaidFor().equals(user1) && expense.getPaidBy().equals(user2)) {
-                debt += expense.getAmount();
+            if(expense.getPaidBy().equals(user1) && expense.getPaidFor().equals(user2)) {
+                debt += (int) expense.getCurrency().convertTo(App.getLoggedInUser().getCurrency(), expense.getAmount());
             }
         }
         for(Expense expense : user1.getDemands()) {
-            if(expense.getPaidBy().equals(user1) && expense.getPaidFor().equals(user2)) {
-                demand += expense.getAmount();
+            if(expense.getPaidFor().equals(user1) && expense.getPaidBy().equals(user2)) {
+                demand += (int) expense.getCurrency().convertTo(App.getLoggedInUser().getCurrency(), expense.getAmount());
             }
         }
+
         return debt - demand;
     }
 

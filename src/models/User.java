@@ -2,6 +2,7 @@ package models;
 
 import models.enums.Currency;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class User {
@@ -86,5 +87,12 @@ public class User {
     }
     public ArrayList<Expense> getDebts() {
         return debts;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User user)) return false;
+        return Objects.equals(username, user.username);
     }
 }
