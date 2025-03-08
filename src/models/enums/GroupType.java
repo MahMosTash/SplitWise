@@ -9,7 +9,7 @@ public enum GroupType {
                 return HOME;
             case "Trip":
                 return TRIP;
-            case "Zan_o_Bache":
+            case "Zan-o-Bache":
                 return ZAN_O_BACHE;
             default:
                 return OTHER;
@@ -22,7 +22,7 @@ public enum GroupType {
             case TRIP:
                 return "Trip";
             case ZAN_O_BACHE:
-                return "Zan_o_Bache";
+                return "Zan-o-Bache";
             default:
                 return "Other";
         }

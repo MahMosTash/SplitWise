@@ -40,6 +40,14 @@ public class Group {
     public ArrayList<Expense> getExpenses() {
         return expenses;
     }
+    public Expense getExpense(User paidBy, User paidFor) {
+        for(Expense expense : expenses) {
+            if(expense.getPaidBy().equals(paidBy) && expense.getPaidFor().equals(paidFor)) {
+                return expense;
+            }
+        }
+        return null;
+    }
     public void addExpense(Expense expense) {
         expenses.add(expense);
     }
@@ -67,4 +75,5 @@ public class Group {
             }
         }
     }
+
 }

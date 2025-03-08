@@ -1,6 +1,7 @@
 package controllers;
 
 import models.*;
+import models.enums.Currency;
 import models.enums.DashboardCommands;
 import models.enums.GroupType;
 
@@ -22,22 +23,24 @@ public class DashboardController {
         StringBuilder groups = new StringBuilder();
         for(Group group : App.getLoggedInUser().getGroups()) {
             groups.append("group name : ").append(group.getName()).append("\n");
+            groups.append("id : ").append(group.getId()).append("\n");
             groups.append("type : ").append(GroupType.getGroupType(group.getType())).append("\n");
             groups.append("creator : ").append(group.getCreator().getName()).append("\n");
             groups.append("members : ").append("\n");
             for (User member : group.getMembers()) {
                 groups.append(member.getName()).append("\n");
             }
+            groups.append("--------------------");
         }
         return new Result(true, groups.toString());
     }
 
-    public static Result addUser(String username, String email, String groupName ) {
+    public static Result addUser(String username, String email, int id) {
         User user = App.getUserByUsername(username);
         if(user == null) {
             return new Result(false, "user not found!");
         }
-        Group group = App.getGroupByName(groupName);
+        Group group = App.getGroupById(id);
         if(group == null) {
             return new Result(false, "group not found!");
         }
@@ -54,14 +57,7 @@ public class DashboardController {
         user.addGroup(group);
         return new Result(true, "user added to the group successfully!");
     }
-    public static Result addExpense(String split, int groupId, String totalExpense, String usernames) {
-        if(DashboardCommands.EQUAL.matches(split)) {
-            return handleAddExpenseEqually(groupId, totalExpense, usernames);
-        }
-        return handleAddExpenseUnequally(groupId, totalExpense, usernames);
-    }
-
-    private static Result handleAddExpenseUnequally(int groupId, String totalExpense, String usernames) {
+    public static Result addExpense(String split, int groupId, String totalExpense, ArrayList<Map<String, String>> users_expenses) {
         Group group = App.getGroupById(groupId);
         if(group == null) {
             return new Result(false, "group not found!");
@@ -69,99 +65,83 @@ public class DashboardController {
         if(!group.isUserInGroup(App.getLoggedInUser())) {
             return new Result(false, "you are not a member of this group!");
         }
-        Result invalidUser = findInvalidUserUnequally(usernames);
-        if(invalidUser.success()) {
-            return invalidUser;
+        Result  usernamesValidation = validateUsernames(users_expenses, group);
+        if(!usernamesValidation.success()) {
+            return usernamesValidation;
         }
-        if(!DashboardCommands.EXPENSE.matches(totalExpense)) {
+        if(!validateExpenses(users_expenses)) {
             return new Result(false, "expense format is invalid!");
         }
-        int totalExpense_ = Integer.parseInt(totalExpense);
-
-        Map<User, Integer> users = getUserForAddExpenseUnequally(usernames);
-        if(!isValidTotalExpense(totalExpense_, users)) {
+        if(isSumValid(users_expenses, totalExpense)) {
             return new Result(false, "the sum of individual costs does not equal the total cost!");
         }
-        createUnequallyExpenses(group,totalExpense_, users);
+        for(Map<String, String> user_expense : users_expenses) {
+            String username = user_expense.keySet().iterator().next();
+            int expense = Integer.parseInt(user_expense.get(username));
+            User user = App.getUserByUsername(username);
+            createExpense(App.getLoggedInUser(),user, expense, group);
+        }
         return new Result(true, "expense added successfully!");
     }
 
-    private static boolean isValidTotalExpense(int totalExpense, Map<User, Integer> users) {
-        int sum = 0;
-        for(Map.Entry<User, Integer> entry: users.entrySet()) {
-            sum += entry.getValue();
-        }
-        return sum == totalExpense;
-    }
-
-    private static void createUnequallyExpenses(Group group, int totalExpense, Map<User, Integer> usersAndAmount) {
-        for(Map.Entry<User, Integer> entry: usersAndAmount.entrySet()) {
-            Expense expense = new Expense(App.getLoggedInUser().getCurrency(), entry.getValue(), App.getLoggedInUser(), entry.getKey(), group);
-        }
-
-    }
-
-    private static Map<User, Integer> getUserForAddExpenseUnequally(String usernames) {
-        String[] list = usernames.split("\\s*,\\s*");
-        Map<User, Integer> users = new HashMap<>();
-        for(String username: list) {
-            String[] userAndAmount = username.split("\\s*:\\s*");
-            users.put(App.getUserByUsername(userAndAmount[0]), Integer.parseInt(userAndAmount[1]));
-        }
-        return users;
-    }
-    public static Result findInvalidUserUnequally(String usernames) {
-        String[] list = usernames.split("\\s*,\\s*");
-        for(String username: list) {
-            String[] userAndAmount = username.split("\\s*:\\s*");
-            if(App.getUserByUsername(userAndAmount[0]) == null) {
-                return new Result(false, userAndAmount[0] + " not in group!");
+    private static Result validateUsernames(ArrayList<Map<String, String>> users_expenses, Group group) {
+        for(Map<String, String> user_expense : users_expenses) {
+            String username = user_expense.keySet().iterator().next();
+            User user = App.getUserByUsername(username);
+            if(user == null) {
+                return new Result(false, username + " not in group!");
             }
-        }
-        return new Result(true, "");
-    }
-    public static Result handleAddExpenseEqually(int groupId, String totalExpense, String usernames) {
-        Group group = App.getGroupById(groupId);
-        if(group == null) {
-            return new Result(false, "group not found!");
-        }
-        if(!group.isUserInGroup(App.getLoggedInUser())) {
-            return new Result(false, "you are not a member of this group!");
-        }
-        Result invalidUser = findInvalidUser(usernames);
-        if(invalidUser.success()) {
-            return invalidUser;
-        }
-        if(!DashboardCommands.EXPENSE.matches(totalExpense)) {
-            return new Result(false, "expense format is invalid!");
-        }
-        ArrayList<User> users = getUserForAddExpenseEqually(usernames);
-        createEquallyExpenses(group, Double.parseDouble(totalExpense), users);
-        return new Result(true, "expense added successfully!");
-    }
-    private static ArrayList<User> getUserForAddExpenseEqually(String usernames) {
-        String[] usernameList = usernames.split("\\s*,\\s*");
-        ArrayList<User> users = new ArrayList<>();
-        for(String username: usernameList) {
-            users.add(App.getUserByUsername(username));
-        }
-        return users;
-    }
-    private static void createEquallyExpenses(Group group, double totalExpense, ArrayList<User> users) {
-        int expensePerUser = (int) totalExpense / users.size();
-        for(User user: users) {
-            Expense expense = new Expense(App.getLoggedInUser().getCurrency(), expensePerUser, App.getLoggedInUser(), user, group);
-        }
-    }
-    private static Result findInvalidUser(String usernames) {
-        String[] usernameList = usernames.split("\\s*,\\s*");
-        for(String username: usernameList) {
-            if(App.getUserByUsername(username) == null) {
+            if(!group.isUserInGroup(user)) {
                 return new Result(false, username + " not in group!");
             }
         }
-        return new Result(true, "");
+        return new Result(true, "usernames are valid!");
     }
+    private static boolean validateExpenses(ArrayList<Map<String, String>> users_expenses) {
+        for(Map<String, String> user_expense : users_expenses) {
+            String expense = user_expense.values().iterator().next();
+            if(!DashboardCommands.EXPENSE.matches(expense)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    private static boolean isSumValid(ArrayList<Map<String, String>> users_expenses, String totalExpense) {
+        int sum = 0;
+        for(Map<String, String> user_expense : users_expenses) {
+            sum += Integer.parseInt(user_expense.values().iterator().next());
+        }
+        return sum != Integer.parseInt(totalExpense);
+    }
+
+    private static void createExpense(User paidBy, User paidFor, int amount, Group group) {
+        if(amount == 0) {
+            return;
+        }
+        Expense expense = group.getExpense(paidBy, paidFor);
+        if(expense == null) {
+            expense = group.getExpense(paidFor, paidBy);
+            if(expense == null) {
+                new Expense(App.getLoggedInUser().getCurrency(), amount, paidBy, paidFor, group);
+            } else {
+                amount = (int) App.getLoggedInUser().getCurrency().convertTo(expense.getCurrency(), amount);
+                int totalAmount = expense.getAmount() - amount;
+                if(totalAmount == 0) {
+                    group.removeExpense(paidFor, paidBy);
+                } else if(totalAmount < 0) {
+                    expense.setAmount(-totalAmount);
+                    expense.changePaidByWithPaidFor();
+                } else {
+                    expense.setAmount(totalAmount);
+                }
+            }
+        } else {
+            expense.setAmount(expense.getAmount() + amount);
+        }
+    }
+
+
+
     public static Result getShowBalance(String username) {
         User user = App.getUserByUsername(username);
         if(user == null) {
@@ -220,9 +200,9 @@ public class DashboardController {
         }
 
         if(balance < 0) {
-            Expense expense = new Expense(App.getLoggedInUser().getCurrency(), -balance, App.getLoggedInUser(), user, lastGroup);
+             new Expense(App.getLoggedInUser().getCurrency(), -balance, App.getLoggedInUser(), user, lastGroup);
         } else {
-            Expense expense = new Expense(App.getLoggedInUser().getCurrency(), balance, user, App.getLoggedInUser(), lastGroup);
+            new Expense(App.getLoggedInUser().getCurrency(), balance, user, App.getLoggedInUser(), lastGroup);
         }
     }
 
@@ -230,13 +210,13 @@ public class DashboardController {
         int debt = 0;
         int demand = 0;
         for(Expense expense : user1.getDebts()) {
-            if(expense.paidFor().equals(user1) && expense.paidBy().equals(user2)) {
-                debt += expense.amount();
+            if(expense.getPaidFor().equals(user1) && expense.getPaidBy().equals(user2)) {
+                debt += expense.getAmount();
             }
         }
         for(Expense expense : user1.getDemands()) {
-            if(expense.paidBy().equals(user1) && expense.paidFor().equals(user2)) {
-                demand += expense.amount();
+            if(expense.getPaidBy().equals(user1) && expense.getPaidFor().equals(user2)) {
+                demand += expense.getAmount();
             }
         }
         return debt - demand;

@@ -6,6 +6,8 @@ import models.Result;
 import models.enums.DashboardCommands;
 import models.enums.Menu;
 
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Dashboard implements AppMenu {
@@ -48,18 +50,29 @@ public class Dashboard implements AppMenu {
     public void handleAddUser(String input) {
         String username = DashboardCommands.ADD_USER.getGroup(input, "username");
         String email = DashboardCommands.ADD_USER.getGroup(input, "email");
-        String groupName = DashboardCommands.ADD_USER.getGroup(input, "groupName").trim();
+        String groupName = DashboardCommands.ADD_USER.getGroup(input, "groupId").trim();
+        int groupId = Integer.parseInt(groupName);
 
-        Result result = DashboardController.addUser(username, email, groupName);
+        Result result = DashboardController.addUser(username, email, groupId);
         System.out.println(result.message());
     }
     public void handleAddExpense(String input) {
         String split = DashboardCommands.ADD_EXPENSE.getGroup(input, "split");
         int groupId = Integer.parseInt(DashboardCommands.ADD_EXPENSE.getGroup(input, "groupId"));
         String totalExpense = DashboardCommands.ADD_EXPENSE.getGroup(input, "totalExpense");
-        String usernames = DashboardCommands.ADD_EXPENSE.getGroup(input, "usernames");
+        int numberOfUsers = Integer.parseInt(DashboardCommands.ADD_EXPENSE.getGroup(input, "numberOfUsers"));
+        ArrayList<Map<String, String>> users_expenses = new ArrayList<>();
+        for(int i = 0; i < numberOfUsers; i++) {
+            String username = DashboardCommands.USER_INPUT_EXPENSE.getGroup(input, "username");
+            String expense = "0";
+            if(DashboardCommands.UNEQUAL.matches(split)) {
+                expense = DashboardCommands.USER_INPUT_EXPENSE.getGroup(input, "expense");
+            }
+            Map<String, String> user_expense = Map.of(username, expense);
+            users_expenses.add(user_expense);
+        }
 
-        Result result = DashboardController.addExpense(split, groupId, totalExpense, usernames);
+        Result result = DashboardController.addExpense(split, groupId, totalExpense, users_expenses);
         System.out.println(result.message());
     }
     public void handleShowBalance(String input) {
