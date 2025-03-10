@@ -1,0 +1,9 @@
+register -u user1 -p User1@1234! -e User1@gmail.com -n user-one
+go to signup menu
+register -u user1 -p User2@1234! -e User2@gmail.com -n user-two
+register -u user2 -p User2@1234! -e User2@gmail.com -n user-two
+go to signup menu
+register -u user3 -p User3@1234! -e User3@gmail.com -n user-three
+login -u user4 -p User1@1234!
+login -u user1 -p User1@1234!
+
