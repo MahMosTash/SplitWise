@@ -86,7 +86,9 @@ public class Dashboard implements AppMenu {
     }
     public void handleSettleUp(String input) {
         String username = DashboardCommands.SETTLE_UP.getGroup(input, "username");
-        Result result = DashboardController.settleUp(username);
+        String money = DashboardCommands.SETTLE_UP.getGroup(input, "money");
+
+        Result result = DashboardController.settleUp(username, money);
 
         System.out.println(result.message());
     }

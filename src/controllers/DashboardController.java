@@ -29,7 +29,7 @@ public class DashboardController {
             for (User member : group.getMembers()) {
                 groups.append(member.getName()).append("\n");
             }
-            groups.append("--------------------");
+            groups.append("--------------------\n");
         }
         return new Result(true, groups.toString());
     }
@@ -107,7 +107,7 @@ public class DashboardController {
     private static boolean validateExpenses(ArrayList<Map<String, String>> users_expenses) {
         for(Map<String, String> user_expense : users_expenses) {
             String expense = user_expense.values().iterator().next();
-            if(!DashboardCommands.EXPENSE.matches(expense)) {
+            if(!DashboardCommands.NUMBER.matches(expense)) {
                 return false;
             }
         }
@@ -180,12 +180,16 @@ public class DashboardController {
         return new Result(true, balance.toString());
     }
 
-    public static Result settleUp(String username) {
+    public static Result settleUp(String username, String money_s) {
         User user = App.getUserByUsername(username);
         if(user == null) {
             return new Result(false, "user not found!");
         }
-        int balance = getBalance(App.getLoggedInUser(), user);
+        if(!DashboardCommands.NUMBER.matches(money_s)) {
+            return new Result(false, "input money format is invalid!");
+        }
+        int money = Integer.parseInt(money_s);
+        int balance = getBalance(App.getLoggedInUser(), user) + money;
         ArrayList<Group> groups = getCommonGroups(App.getLoggedInUser(), user);
         settleUpGroups(groups, user, balance);
         if(balance == 0) {
@@ -208,9 +212,9 @@ public class DashboardController {
         }
 
         if(balance < 0) {
-             new Expense(App.getLoggedInUser().getCurrency(), -balance, App.getLoggedInUser(), user, lastGroup);
+            new Expense(App.getLoggedInUser().getCurrency(),-1 * balance, user, App.getLoggedInUser(), lastGroup);
         } else {
-            new Expense(App.getLoggedInUser().getCurrency(), balance, user, App.getLoggedInUser(), lastGroup);
+            new Expense(App.getLoggedInUser().getCurrency(), balance, App.getLoggedInUser(), user, lastGroup);
         }
     }
 
