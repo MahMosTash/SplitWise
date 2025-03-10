@@ -17,6 +17,7 @@ public class Expense{
         this.group = group;
         group.addExpense(this);
         paidBy.addExpenseToDebts(this);
+        paidFor.addExpenseToDemands(this);
     }
 
     public User getPaidBy() {

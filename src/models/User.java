@@ -95,4 +95,11 @@ public class User {
         if (!(o instanceof User user)) return false;
         return Objects.equals(username, user.username);
     }
+
+    public void removeDebt(Expense expense) {
+        debts.remove(expense);
+    }
+    public void removeDemand(Expense expense) {
+        demands.remove(expense);
+    }
 }
