@@ -12,4 +12,5 @@ register -u amir_h -p Amir#123 -e harchi@in.ja.net -n -harchi
 register -u amir_h -p Amir#123 -e amir@g.mail.org -n harchi-
 register -u amir_h -p Amir#123 -e amir@g.mail.edu -n amir-hosein!!
 register -u amir_h -p Amir#123 -e amir@g.mail.com -n amir-hosein
+chert o pert
 exit

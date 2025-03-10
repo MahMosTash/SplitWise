@@ -19,7 +19,7 @@ public class LoginMenu implements AppMenu {
         } else if (LoginMenuCommands.GO_TO_SIGN_UP_MENU.matches(input)) {
             App.setCurrentMenu(Menu.SignUpMenu);
             System.out.println("you are now in signup menu!");
-        } else if (LoginMenuCommands.Exit.matches(input)) {
+        } else if (LoginMenuCommands.EXIT.matches(input)) {
             App.setCurrentMenu(Menu.Exit);
         } else {
             invalidCommand();

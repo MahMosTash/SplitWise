@@ -14,7 +14,7 @@ public enum DashboardCommands implements Command {
     SETTLE_UP("settle-up\\s+-u\\s+(?<username>\\S+)"),
     GO_TO_PROFILE_MENU("go\\s+to\\s+profile\\s+menu"),
     LOGOUT("logout"),
-    EXIT("Exit");
+    EXIT("exit");
 
     private final String command;
 
