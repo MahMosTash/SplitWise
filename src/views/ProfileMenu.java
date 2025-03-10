@@ -24,6 +24,7 @@ public class ProfileMenu implements AppMenu {
             handlePasswordChange(input);
         } else if (ProfileMenuCommands.Back.matches(input)) {
             App.setCurrentMenu(Menu.Dashboard);
+            System.out.println("you are now in dashboard!");
         } else if(ProfileMenuCommands.EXIT.matches(input)) {
             App.setCurrentMenu(Menu.Exit);
         }

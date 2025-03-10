@@ -16,6 +16,7 @@ public class SignUpMenu implements AppMenu {
             handleRegister(input);
         } else if (SignUpMenuCommands.GO_TO_LOGIN_MENU.matches(input)) {
             App.setCurrentMenu(Menu.LoginMenu);
+            System.out.println("you are now in login menu!");
         } else if (SignUpMenuCommands.EXIT.matches(input)) {
             App.setCurrentMenu(Menu.Exit);
         } else {

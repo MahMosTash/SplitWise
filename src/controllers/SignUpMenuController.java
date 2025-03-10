@@ -20,7 +20,7 @@ public class SignUpMenuController {
             return new Result(false, "name format is invalid!");
         }
         App.addUser(new User(name, username, email, password));
-        return new Result(true, "user registered successfully!");
+        return new Result(true, "user registered successfully.you are now in login menu!");
     }
     private static boolean validateEmail(String email) {
         if(!SignUpMenuCommands.EMAIL.matches(email)) {
