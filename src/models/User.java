@@ -1,13 +1,16 @@
 package models;
 
+import models.enums.Currency;
 import java.util.ArrayList;
+import java.util.Objects;
+
 
 public class User {
     private final String name;
     private String username;
     private final String email;
     private String password;
-    private String currency = "USD";
+    private Currency currency = Currency.GTC;
     private final ArrayList<User> friends = new ArrayList<>();
     private final ArrayList<Group> groups = new ArrayList<>();
     private final ArrayList<Expense> demands = new ArrayList<>();
@@ -56,11 +59,40 @@ public class User {
         return email;
     }
 
-    public String getCurrency() {
+    public Currency getCurrency() {
         return currency;
     }
 
     public void setCurrency(String currency) {
-        this.currency = currency;
+        this.currency = Currency.getCurrency(currency);
+    }
+
+    public ArrayList<Group> getGroupsWith(User user) {
+        ArrayList<Group> groups = new ArrayList<>();
+        for(Group group : this.groups) {
+            if(group.isUserInGroup(user)) {
+                groups.add(group);
+            }
+        }
+        return groups;
+    }
+    public void addExpenseToDemands(Expense expense) {
+        demands.add(expense);
+    }
+    public void addExpenseToDebts(Expense expense) {
+        debts.add(expense);
+    }
+    public ArrayList<Expense> getDemands() {
+        return demands;
+    }
+    public ArrayList<Expense> getDebts() {
+        return debts;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User user)) return false;
+        return Objects.equals(username, user.username);
     }
 }

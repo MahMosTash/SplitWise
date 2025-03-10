@@ -1,9 +1,9 @@
 package models.enums;
 
 public enum Currency {
-    USD(1, "USD"),
-    IRR(50, "IRR"),
-    EUR(12, "EUR"),;
+    GTC(1, "GTC"),
+    SUD(2, "SUD"),
+    QTR(5, "QTR");
 
     // Value of each currency in GBP
     private final int value;
@@ -30,7 +30,7 @@ public enum Currency {
     }
     // Convert amount to another currency
     public double convertTo(Currency currency, double amount){
-        return amount * this.value / currency.value;
+        return amount * currency.value / this.value;
     }
 
 

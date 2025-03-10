@@ -1,12 +1,8 @@
 package controllers;
 
-import models.enums.Menu;
 import models.*;
 import models.enums.ProfileMenuCommands;
 import models.enums.SignUpMenuCommands;
-
-import java.util.ArrayList;
-import java.util.Comparator;
 
 public class ProfileMenuController {
     public static Result getUserInfo() {

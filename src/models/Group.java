@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class Group {
     private final String name;
+    private final int id;
     private final GroupType type;
     private final User creator;
     private final ArrayList<User> members = new ArrayList<>();
@@ -15,8 +16,9 @@ public class Group {
         this.name = name;
         this.type = GroupType.getGroupType(type);
         this.creator = creator;
-
+        this.id = App.getGroupId();
         members.add(creator);
+        App.addGroup(this);
     }
 
     public String getName() {
@@ -38,6 +40,17 @@ public class Group {
     public ArrayList<Expense> getExpenses() {
         return expenses;
     }
+    public Expense getExpense(User paidBy, User paidFor) {
+        for(Expense expense : expenses) {
+            if(expense.getPaidBy().equals(paidBy) && expense.getPaidFor().equals(paidFor)) {
+                return expense;
+            }
+        }
+        return null;
+    }
+    public void addExpense(Expense expense) {
+        expenses.add(expense);
+    }
     public boolean isUserInGroup(User user) {
         for(User member : members) {
             if(member.equals(user)) {
@@ -50,4 +63,17 @@ public class Group {
     public void addMember(User user) {
         members.add(user);
     }
+
+    public int getId() {
+        return id;
+    }
+    public void removeExpense(User paidBy, User PaidFor) {
+        for(Expense expense : expenses) {
+            if(expense.getPaidBy().equals(paidBy) && expense.getPaidFor().equals(PaidFor)) {
+                expenses.remove(expense);
+                break;
+            }
+        }
+    }
+
 }

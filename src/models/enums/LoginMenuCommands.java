@@ -4,7 +4,7 @@ package models.enums;
 public enum LoginMenuCommands implements Command {
     LOGIN("login\\s+-u\\s+(?<username>\\S+)\\s+-p\\s+(?<password>\\S+)"),
     FORGET_PASSWORD("forget-password\\s+-u\\s+(?<username>\\S+)\\s+-e\\s+(?<email>\\S+)"),
-    GO_TO_SIGN_UP_MENU("go\\s+to\\s+sign\\s+up\\s+menu"),
+    GO_TO_SIGN_UP_MENU("go\\s+to\\s+signup\\s+menu"),
     Exit("exit");
 
     private final String pattern;

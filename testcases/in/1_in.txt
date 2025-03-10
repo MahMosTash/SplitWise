@@ -1,0 +1,24 @@
+register -u amir -p Aa12345! -e amir@sharif.edu -n amirhosein
+go to signup menu
+register -u mamad -p Mm12345! -e mamad@sharif.edu -n mamad
+login -u amir -p Mm12345!
+login -u amir -p Aa12345!
+show my groups
+create-group -n eshgh o safay faravan -t Home
+show my groups
+add-user -u mamad -e mamad@sharif.edu -g 1
+show my groups
+add-expense -g 1 -s unequally -t 100 -n 2
+amir 30
+mamad 70
+logout
+login -u mamad -p Mm12345!
+add-expense -g 1 -s equally -t 50 -n 1
+amir
+show balance -u amir
+go to profile menu
+change-currency -n QTR
+back
+show balance -u amir
+logout
+exit
