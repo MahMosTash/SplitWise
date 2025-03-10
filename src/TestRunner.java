@@ -1,8 +1,7 @@
-import Test.InputRedirector;
-import Test.OutputRedirector;
-
 import java.io.File;
-
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestRunner {
     public static void main(String[] args) {
@@ -20,21 +19,28 @@ public class TestRunner {
         }
 
         for (File inputFile : inputFiles) {
-
             String outputFileName = inputFile.getName().replace("_in.txt", "_out.txt");
             File outputFile = new File(outputDir, outputFileName);
 
-            InputRedirector.redirectInputFromFile(inputFile.getAbsolutePath());
-            OutputRedirector.redirectOutputToFile(outputFile.getAbsolutePath());
+            List<String> command = new ArrayList<>();
+            command.add("java");
+            command.add("-cp");
+            command.add("out/production/SplitWise");
+            command.add("Main");
+            command.add("<");
+            command.add(inputFile.getAbsolutePath());
+            command.add(">");
+            command.add(outputFile.getAbsolutePath());
 
+            ProcessBuilder processBuilder = new ProcessBuilder(command);
+            processBuilder.redirectErrorStream(true);
 
             try {
-                // Run the main application
-                Main.main(null);
-            } catch (RuntimeException e) {
-                System.err.println("Main method terminated: " + e.getMessage());
+                Process process = processBuilder.start();
+                process.waitFor();
+            } catch (IOException | InterruptedException e) {
+                System.err.println("Error running the command: " + e.getMessage());
             }
-
         }
     }
 }

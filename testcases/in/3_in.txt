@@ -1,0 +1,15 @@
+register -u ami -p harchi -e harchi -n harchi
+register -u amirhoseinmirzaei -p harchi -e harchi -n harchi
+register -u !amiese -p harchi -e harchi -n harchi
+register -u amir-hos -p harchi -e harchi -n harchi
+register -u amir.hos -p HarChi -e harchi -n harchi
+register -u amir_hos -p HarChi1 -e harchi -n harchi
+register -u amir_h -p Amir#123 -e harchi -n harchi
+register -u amir_h -p Amir#123 -e haarch@gmail..com -n harchi
+register -u amir_h -p Amir#123 -e harchi@.gmail.com -n harchi
+register -u amir_h -p Amir#123 -e harchi@in.ja.khar -n harchi
+register -u amir_h -p Amir#123 -e harchi@in.ja.net -n -harchi
+register -u amir_h -p Amir#123 -e amir@g.mail.org -n harchi-
+register -u amir_h -p Amir#123 -e amir@g.mail.edu -n amir-hosein!!
+register -u amir_h -p Amir#123 -e amir@g.mail.com -n amir-hosein
+exit

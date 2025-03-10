@@ -9,7 +9,7 @@ public enum DashboardCommands implements Command {
     UNEQUAL("unequally"),
     ADD_EXPENSE("add-expense\\s+-g\\s+(?<groupId>\\d+)\\s+-s\\s+(?<split>equally|unequally)\\s+-t\\s+(?<totalExpense>\\S+)\\s+-n\\s+(?<numberOfUsers>\\d+)"),
     USER_INPUT_EXPENSE("(?<username>\\S+)(?:\\s(?<expense>\\d+))?"),
-    EXPENSE("\\d+"),
+    NUMBER("\\d+"),
     SHOW_BALANCE("show\\s+balance\\s+-u\\s+(?<username>\\S+)"),
     SETTLE_UP("settle-up\\s+-u\\s+(?<username>\\S+)"),
     GO_TO_PROFILE_MENU("go\\s+to\\s+profile\\s+menu"),

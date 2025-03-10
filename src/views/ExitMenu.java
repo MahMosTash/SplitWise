@@ -5,6 +5,6 @@ import java.util.Scanner;
 public class ExitMenu implements AppMenu {
     @Override
     public void check(Scanner scanner) {
-        throw new RuntimeException("Exiting the application");
+        System.exit(0);
     }
 }
