@@ -1,7 +1,6 @@
 package controllers;
 
 import models.*;
-import models.enums.Currency;
 import models.enums.DashboardCommands;
 import models.enums.GroupType;
 
@@ -79,6 +78,8 @@ public class DashboardController {
             String username = user_expense.keySet().iterator().next();
             int expense = Integer.parseInt(user_expense.get(username));
             User user = App.getUserByUsername(username);
+            assert user != null;
+            if(user.equals(App.getLoggedInUser())) continue;
             if(!DashboardCommands.UNEQUAL.matches(split)) {
 
                 expense = Integer.parseInt(totalExpense);
@@ -126,30 +127,28 @@ public class DashboardController {
         }
         Expense expense = group.getExpense(paidBy, paidFor);
         if(expense == null) {
-            expense = group.getExpense(paidFor, paidBy);
-            if(expense == null) {
-                new Expense(App.getLoggedInUser().getCurrency(), amount, paidBy, paidFor, group);
-            } else {
-                amount = (int) App.getLoggedInUser().getCurrency().convertTo(expense.getCurrency(), amount);
-                int totalAmount = expense.getAmount() - amount;
-                if(totalAmount == 0) {
-                    group.removeExpense(paidFor, paidBy);
-                } else if(totalAmount < 0) {
-                    expense.setAmount(-totalAmount);
-                    expense.changePaidByWithPaidFor();
-                } else {
-                    expense.setAmount(totalAmount);
-                }
-            }
-        } else {
-            expense.setAmount(expense.getAmount() + amount);
+            new Expense(App.getLoggedInUser().getCurrency(), amount, paidBy, paidFor, group);
+            return;
         }
-        explainWhatTheFuckIsGoingOn(paidBy, paidFor, amount, group);
+
+        int newAmount;
+        if(expense.getPaidBy().equals(paidBy)) {
+            newAmount = expense.getAmount() + amount;
+        } else {
+            newAmount = expense.getAmount() - amount;
+        }
+
+        if(newAmount < 0) {
+            group.removeExpense(paidBy, paidFor);
+            group.removeExpense(paidFor, paidBy);
+            newAmount = -1 * newAmount;
+            new Expense(App.getLoggedInUser().getCurrency(), newAmount, paidBy, paidFor, group);
+            return;
+        }
+        expense.setAmount(newAmount);
+
     }
 
-    private static void explainWhatTheFuckIsGoingOn(User paidBy, User paidFor, int amount, Group group) {
-
-    }
 
 
     public static Result getShowBalance(String username) {

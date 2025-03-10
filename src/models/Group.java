@@ -44,6 +44,8 @@ public class Group {
         for(Expense expense : expenses) {
             if(expense.getPaidBy().equals(paidBy) && expense.getPaidFor().equals(paidFor)) {
                 return expense;
+            } else if(expense.getPaidBy().equals(paidFor) && expense.getPaidFor().equals(paidBy)) {
+                return expense;
             }
         }
         return null;
@@ -67,10 +69,12 @@ public class Group {
     public int getId() {
         return id;
     }
-    public void removeExpense(User paidBy, User PaidFor) {
+    public void removeExpense(User paidBy, User paidFor) {
         for(Expense expense : expenses) {
-            if(expense.getPaidBy().equals(paidBy) && expense.getPaidFor().equals(PaidFor)) {
+            if(expense.getPaidBy().equals(paidBy) && expense.getPaidFor().equals(paidFor)) {
                 expenses.remove(expense);
+                paidBy.removeDebt(expense);
+                paidFor.removeDemand(expense);
                 break;
             }
         }
