@@ -11,10 +11,10 @@ public enum DashboardCommands implements Command {
     USER_INPUT_EXPENSE("(?<username>\\S+)(?:\\s(?<expense>\\d+))?"),
     NUMBER("\\d+"),
     SHOW_BALANCE("show\\s+balance\\s+-u\\s+(?<username>\\S+)"),
-    SETTLE_UP("settle-up\\s+-u\\s+(?<username>\\S+)"),
+    SETTLE_UP("settle-up\\s+-u\\s+(?<username>\\S+)\\s+-m\\s+(?<money>\\S+)"),
     GO_TO_PROFILE_MENU("go\\s+to\\s+profile\\s+menu"),
     LOGOUT("logout"),
-    EXIT("Exit");
+    EXIT("exit");
 
     private final String command;
 
