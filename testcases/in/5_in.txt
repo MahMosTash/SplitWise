@@ -6,4 +6,18 @@ go to signup menu
 register -u user3 -p User3@1234! -e User3@gmail.com -n user-three
 login -u user4 -p User1@1234!
 login -u user1 -p User1@1234!
+go to profile menu
+show user info
+back
+logout
+login -u user2 -p User2@1234!
+go to profile menu
+show user info
+change-currency -n USD
+change-currency -n khar_mash_mashala
+change-currency -n QTR
+show user info
+change-username -n user2
+change-username -n user1
+change-username -n new_user
 
