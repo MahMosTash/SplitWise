@@ -1,7 +1,6 @@
 package controllers;
 
 import models.*;
-import models.enums.Currency;
 import models.enums.DashboardCommands;
 import models.enums.GroupType;
 
@@ -79,6 +78,8 @@ public class DashboardController {
             String username = user_expense.keySet().iterator().next();
             int expense = Integer.parseInt(user_expense.get(username));
             User user = App.getUserByUsername(username);
+            assert user != null;
+            if(user.equals(App.getLoggedInUser())) continue;
             if(!DashboardCommands.UNEQUAL.matches(split)) {
 
                 expense = Integer.parseInt(totalExpense);
