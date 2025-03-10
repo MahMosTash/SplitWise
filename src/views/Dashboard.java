@@ -32,8 +32,10 @@ public class Dashboard implements AppMenu {
         }
         else if(DashboardCommands.GO_TO_PROFILE_MENU.matches(input)) {
             App.setCurrentMenu(Menu.ProfileMenu);
+            System.out.println("you are now in profile menu!");
         } else if(DashboardCommands.LOGOUT.matches(input)) {
             App.setCurrentMenu(Menu.LoginMenu);
+            System.out.println("user logged out successfully.you are now in login menu!");
         }
         else {
             invalidCommand();
