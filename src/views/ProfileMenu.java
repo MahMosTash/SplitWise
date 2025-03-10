@@ -22,7 +22,7 @@ public class ProfileMenu implements AppMenu {
             handleUsernameChange(input);
         } else if (ProfileMenuCommands.CHANGE_PASSWORD.matches(input)) {
             handlePasswordChange(input);
-        } else if (ProfileMenuCommands.Back.matches(input)) {
+        } else if (ProfileMenuCommands.BACK.matches(input)) {
             App.setCurrentMenu(Menu.Dashboard);
             System.out.println("you are now in dashboard!");
         } else if(ProfileMenuCommands.EXIT.matches(input)) {
