@@ -80,7 +80,10 @@ public class DashboardController {
             int expense = Integer.parseInt(user_expense.get(username));
             User user = App.getUserByUsername(username);
             if(!DashboardCommands.UNEQUAL.matches(split)) {
-                expense = Integer.parseInt(totalExpense) / user_expense.size();
+
+                expense = Integer.parseInt(totalExpense);
+                expense /= users_expenses.size();
+
             }
             createExpense(App.getLoggedInUser(),user, expense, group);
         }
