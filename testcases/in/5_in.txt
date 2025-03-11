@@ -20,4 +20,20 @@ show user info
 change-username -n user2
 change-username -n user1
 change-username -n new_user
-
+back
+logout
+login -u user2 -p User2@1234!
+login -u new_user -p User2@1234!
+go to profile menu
+show user info
+change-password -o User3@1234! -n User3@1234!
+change-password -o User2@1234! -n User2@1234!
+change-password -o User2@1234! -n Invalid
+change-password -o User2@1234! -n Aa123456!!
+show user info
+back
+logout
+login -u new_user -p User2@1234!
+login -u new_user -p Aa123456!!
+logout
+exit
