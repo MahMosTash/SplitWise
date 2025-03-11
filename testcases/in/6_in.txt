@@ -1,0 +1,61 @@
+register -u mahmostash -p ThisIsNotValid -e test@gmail.com -n mahdyar
+register -u mahmostash -p NotValid@123 -e test@gmail.com -n mahdyar
+go to signup menu
+register -u mahmostash -p ThisIsNotValid -e test@gmail.com -n mahdyar
+register -u radical-1 -p IsValid@456 -e test2@sharif.edu -n amirhossein
+go to signup menu
+register -u moftkhor -p MoftKhor789! -e test3@sharif.edu -n parmida
+forget-password -u mahdyar -e test@gmail.com
+forget-password -u mahmostash -e test@gmail.com
+login -u mahmostash -p NotValid@123
+create-group -n test -t test
+create-group -n test -t Zan-o-Bache
+show my groups
+add-user -u moftkhor -e test3@sharif.edu -g 1
+show my groups
+add-user -u radical-1 -e test2@sharif.edu -g 1
+add-expense -g 1 -s equally -t 600 -n 3
+mahmostash
+radical-1
+noooo
+add-expense -g 1 -s equally -t 600 -n 3
+mahmostash
+radical-1
+moftkhor
+show balance -u moftkhor
+show balance -u radical-1
+logout
+login -u moftkhor -p MoftKhor789!
+show balance -u mahmostash
+add-expense -g 1 -s equally -t 400 -n 2
+mahmostash
+moftkhor
+show balance -u mahmostash
+go to profile menu
+show user info
+change-currency -n SUD
+show user info
+back
+add-expense -g 1 -s equally -t 400 -n 2
+mahmostash
+moftkhor
+show balance -u mahmostash
+logout
+login -u mahmostash -p NotValid@123
+show balance -u moftkhor
+create-group -n test2 -t Home
+add-user -u moftkhor -e test3@sharif.edu -g 2
+show my groups
+add-expense -g 2 -s equally -t 400 -n 2
+mahmostash
+moftkhor
+show balance -u moftkhor
+logout
+login -u moftkhor -p MoftKhor789!
+show balance -u mahmostash
+settle-up -u mahmostash -m 70
+logout
+login -u mahmostash -p NotValid@123
+show balance -u moftkhor
+exit
+
