@@ -219,7 +219,7 @@ public class DashboardController {
         }
     }
 
-    public static int getBalance(User user1, User user2) {
+    public static int \\\\\\\\\\\\\\\\\\\\\\\\\\\getBalance(User user1, User user2) {
         int debt = 0;
         int demand = 0;
         for(Expense expense : user1.getDebts()) {
