@@ -8,11 +8,11 @@ public class ProfileMenuController {
     public static Result getUserInfo() {
         StringBuilder userInfo = new StringBuilder();
         User user = App.getLoggedInUser();
-        userInfo.append("username: ").append(user.getUsername()).append("\n");
-        userInfo.append("password: ").append(user.getPassword()).append("\n");
-        userInfo.append("currency: ").append(user.getCurrency()).append("\n");
+        userInfo.append("username : ").append(user.getUsername()).append("\n");
+        userInfo.append("password : ").append(user.getPassword()).append("\n");
+        userInfo.append("currency : ").append(user.getCurrency()).append("\n");
         userInfo.append("email: ").append(user.getEmail()).append("\n");
-        userInfo.append("name: ").append(user.getName());
+        userInfo.append("name : ").append(user.getName());
 
         return new Result(true, userInfo.toString());
     }
