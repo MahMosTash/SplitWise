@@ -1,0 +1,31 @@
+register -u mahmostash -p NotValid@123 -e test@gmail.com -n mahdyar
+go to signup menu
+register -u radical-1 -p IsValid@456 -e test2@sharif.edu -n amirhossein
+go to signup menu
+register -u moftkhor -p MoftKhor789! -e test3@sharif.edu -n parmida
+login -u mahmostash -p NotValid@123
+create-group -n test1 -t Other
+add-user -u radical-1 -e test2@sharif.edu -g 1
+add-user -u moftkhor -e test3@sharif.edu -g 1
+add-expense -g 1 -s unequally -t 1000 -n 3
+mahmostash 400
+radical-1 300
+moftkhor 200
+show balance -u radical-1
+show balance -u moftkhor
+add-expense -g 1 -s unequally -t 1000 -n 3
+mahmostash 350
+radical-1 300
+moftkhor 350
+show balance -u radical-1
+show balance -u moftkhor
+add-expense -g 1 -s     equally -t 1000 -n 3
+mahmostash
+radical-1
+moftkhor
+show balance -u radical-1
+show balance -u moftkhor
+show my groups
+go to profile menu
+show user info
+exit

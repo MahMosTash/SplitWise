@@ -29,7 +29,10 @@ public class DashboardController {
             for (User member : group.getMembers()) {
                 groups.append(member.getName()).append("\n");
             }
-            groups.append("--------------------");
+            groups.append("--------------------\n");
+        }
+        if (groups.length() != 0) {
+            groups.delete(groups.length()-1, groups.length());
         }
         return new Result(true, groups.toString());
     }

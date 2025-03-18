@@ -1,0 +1,37 @@
+register -u mahmostash -p NotValid@123 -e test@gmail.com -n mahdyar
+go to signup menu
+register -u radical-1 -p IsValid@456 -e test2@sharif.edu -n amirhossein
+go to signup menu
+register -u moftkhor -p MoftKhor789! -e test3@sharif.edu -n parmida
+login -u mahmostash -p NotValid@123
+create-group -n test1 Other
+create-group -n test1         -t Other
+create-group        -n                 test2         -t Home
+create - group -n test3 -t Other
+create-group -n test3 -t Other
+add-user -u radical-1 -e test2@sharif.edu -g 1
+add-user -u radical-1 -e test2@sharif.edu -g 2
+add-user -u radical-1 -e test2@sharif.edu -g 3
+show balance -u radical-1
+add-expense -g 1 -s equally -t 400 -n 2
+mahmostash
+radical-1
+add-expense -g 3 -s equally -t 400 -n 2
+mahmostash
+radical-1
+show balance -u radical-1
+settle-up -u      radical-1      -m 150
+logout
+login     -u radical-1 -p IsValid@456
+show balance -u mahmostash
+go to profile menu
+change-currency -n test
+change-currency -n QTR
+back
+show balance -u mahmostash
+settle-up -u      mahmostash      -m 150
+settle-up -u      mahmostash      -m 2500
+logout
+login -u mahmostash -p NotValid@123
+show balance -u radical-1
+exit
