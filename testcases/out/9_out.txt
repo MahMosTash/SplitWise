@@ -1,0 +1,218 @@
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+user registered successfully.you are now in login menu!
+invalid command!
+user logged in successfully.you are now in dashboard!
+you are now in profile menu!
+username : user1
+password : User@1
+currency : GTC
+email : user@gmail.com
+name : a
+your username changed to userr1 successfully!
+please enter a new username!
+your username changed to user1 successfully!
+this username is already taken!
+password incorrect!
+please enter a new password!
+your password changed successfully!
+invalid command!
+you are now in dashboard!
+user logged out successfully.you are now in login menu!
+password is incorrect!
+user logged in successfully.you are now in dashboard!
+user logged out successfully.you are now in login menu!
+email doesn't match!
+username doesn't exist!
+password : User@2
+user logged in successfully.you are now in dashboard!
+invalid command!
+group name format is invalid!
+group type is invalid!
+group created successfully!
+group created successfully!
+group created successfully!
+user not found!
+group not found!
+group not found!
+the email provided does not match the username!
+user added to the group successfully!
+user already in the group!
+user added to the group successfully!
+user added to the group successfully!
+user added to the group successfully!
+group name : tavalod tavalod
+id : 1
+type : Zan-o-Bache
+creator : a
+members :
+a
+b
+c
+d
+e
+--------------------
+group name : safar mafar
+id : 2
+type : Trip
+creator : a
+members :
+a
+--------------------
+group name : dong khabgah
+id : 3
+type : Home
+creator : a
+members :
+a
+--------------------
+user2 not in group!
+user3 not in group!
+user4 not in group!
+user5 not in group!
+user6 not in group!
+you are settled with user2
+expense added successfully!
+user2 owes you 20 GTC in tavalod tavalod!
+user logged out successfully.you are now in login menu!
+user logged in successfully.you are now in dashboard!
+group name : tavalod tavalod
+id : 1
+type : Zan-o-Bache
+creator : a
+members :
+a
+b
+c
+d
+e
+--------------------
+only the group creator can add users!
+you owe user1 20 GTC in tavalod tavalod!
+expense format is invalid!
+expense added successfully!
+user1 owes you 30 GTC in tavalod tavalod!
+the sum of individual costs does not equal the total cost!
+user1 owes you 30 GTC in tavalod tavalod!
+expense added successfully!
+user1 owes you 60 GTC in tavalod tavalod!
+user logged out successfully.you are now in login menu!
+user logged in successfully.you are now in dashboard!
+you owe user2 60 GTC in tavalod tavalod!
+user not found!
+you owe user2 10 GTC now!
+user2 owes you 40 GTC now!
+user logged out successfully.you are now in login menu!
+you are now in signup menu!
+username format is invalid!
+password format is invalid!
+email format is invalid!
+email format is invalid!
+name format is invalid!
+user registered successfully.you are now in login menu!
+user logged in successfully.you are now in dashboard!
+group name format is invalid!
+group created successfully!
+group name : End!!!!!!
+id : 4
+type : Other
+creator : mahdyar
+members :
+mahdyar
+--------------------
+user added to the group successfully!
+user added to the group successfully!
+user added to the group successfully!
+user added to the group successfully!
+user added to the group successfully!
+user added to the group successfully!
+user added to the group successfully!
+user added to the group successfully!
+user added to the group successfully!
+user added to the group successfully!
+group name : End!!!!!!
+id : 4
+type : Other
+creator : mahdyar
+members :
+mahdyar
+a
+b
+c
+d
+e
+f
+g
+h
+i
+j
+--------------------
+user logged out successfully.you are now in login menu!
+user logged in successfully.you are now in dashboard!
+user already in the group!
+user added to the group successfully!
+user added to the group successfully!
+user added to the group successfully!
+user logged out successfully.you are now in login menu!
+user logged in successfully.you are now in dashboard!
+group name : End!!!!!!
+id : 4
+type : Other
+creator : mahdyar
+members :
+mahdyar
+a
+b
+c
+d
+e
+f
+g
+h
+i
+j
+--------------------
+group name : tavalod tavalod
+id : 1
+type : Zan-o-Bache
+creator : a
+members :
+a
+b
+c
+d
+e
+mahdyar
+--------------------
+group name : safar mafar
+id : 2
+type : Trip
+creator : a
+members :
+a
+mahdyar
+--------------------
+group name : dong khabgah
+id : 3
+type : Home
+creator : a
+members :
+a
+mahdyar
+--------------------
