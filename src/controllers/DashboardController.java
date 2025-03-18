@@ -102,7 +102,7 @@ public class DashboardController {
             if(user == null) {
                 stringBuilder.append(username).append(" not in group!").append("\n");
             }
-            if(!group.isUserInGroup(user)) {
+            else if(!group.isUserInGroup(user)) {
                 stringBuilder.append(username).append(" not in group!").append("\n");
             }
         }
