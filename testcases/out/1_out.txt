@@ -1,0 +1,33 @@
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+user registered successfully.you are now in login menu!
+password is incorrect!
+user logged in successfully.you are now in dashboard!
+
+group created successfully!
+group name : eshgh o safay faravan
+id : 1
+type : Home
+creator : amirhosein
+members : 
+amirhosein
+--------------------
+user added to the group successfully!
+group name : eshgh o safay faravan
+id : 1
+type : Home
+creator : amirhosein
+members : 
+amirhosein
+mamad
+--------------------
+expense added successfully!
+user logged out successfully.you are now in login menu!
+user logged in successfully.you are now in dashboard!
+expense added successfully!
+you owe amir 20 GTC in eshgh o safay faravan!
+you are now in profile menu!
+your currency changed to QTR successfully!
+you are now in dashboard!
+you owe amir 100 QTR in eshgh o safay faravan!
+user logged out successfully.you are now in login menu!

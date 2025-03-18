@@ -1,0 +1,11 @@
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+this username is already taken!
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+user registered successfully.you are now in login menu!
+username doesn't exist!
+password is incorrect!
+email doesn't match!
+password : User1@1234!
+user logged in successfully.you are now in dashboard!

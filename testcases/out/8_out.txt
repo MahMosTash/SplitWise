@@ -1,0 +1,33 @@
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+user registered successfully.you are now in login menu!
+user logged in successfully.you are now in dashboard!
+group created successfully!
+user added to the group successfully!
+user added to the group successfully!
+the sum of individual costs does not equal the total cost!
+you are settled with radical-1
+you are settled with moftkhor
+expense added successfully!
+radical-1 owes you 300 GTC in test1!
+moftkhor owes you 350 GTC in test1!
+expense added successfully!
+radical-1 owes you 633 GTC in test1!
+moftkhor owes you 683 GTC in test1!
+group name : test1
+id : 1
+type : Other
+creator : mahdyar
+members :
+mahdyar
+amirhossein
+parmida
+--------------------
+you are now in profile menu!
+username : mahmostash
+password : NotValid@123
+currency : GTC
+email : test@gmail.com
+name : mahdyar

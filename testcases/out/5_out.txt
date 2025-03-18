@@ -1,0 +1,58 @@
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+this username is already taken!
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+user registered successfully.you are now in login menu!
+username doesn't exist!
+user logged in successfully.you are now in dashboard!
+you are now in profile menu!
+username : user1
+password : User1@1234!
+currency : GTC
+email : User1@gmail.com
+name : user-one
+you are now in dashboard!
+user logged out successfully.you are now in login menu!
+user logged in successfully.you are now in dashboard!
+you are now in profile menu!
+username : user2
+password : User2@1234!
+currency : GTC
+email : User2@gmail.com
+name : user-two
+currency format is invalid!
+currency format is invalid!
+your currency changed to QTR successfully!
+username : user2
+password : User2@1234!
+currency : QTR
+email : User2@gmail.com
+name : user-two
+please enter a new username!
+this username is already taken!
+your username changed to new_user successfully!
+you are now in dashboard!
+user logged out successfully.you are now in login menu!
+username doesn't exist!
+user logged in successfully.you are now in dashboard!
+you are now in profile menu!
+username : new_user
+password : User2@1234!
+currency : QTR
+email : User2@gmail.com
+name : user-two
+password incorrect!
+please enter a new password!
+new password format is invalid!
+your password changed successfully!
+username : new_user
+password : Aa123456!!
+currency : QTR
+email : User2@gmail.com
+name : user-two
+you are now in dashboard!
+user logged out successfully.you are now in login menu!
+password is incorrect!
+user logged in successfully.you are now in dashboard!
+user logged out successfully.you are now in login menu!

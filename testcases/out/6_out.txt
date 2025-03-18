@@ -1,0 +1,84 @@
+password format is invalid!
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+this username is already taken!
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+user registered successfully.you are now in login menu!
+username doesn't exist!
+password : NotValid@123
+user logged in successfully.you are now in dashboard!
+group type is invalid!
+group created successfully!
+group name : test
+id : 1
+type : Zan-o-Bache
+creator : mahdyar
+members : 
+mahdyar
+--------------------
+user added to the group successfully!
+group name : test
+id : 1
+type : Zan-o-Bache
+creator : mahdyar
+members : 
+mahdyar
+parmida
+--------------------
+user added to the group successfully!
+noooo not in group!
+expense added successfully!
+moftkhor owes you 200 GTC in test!
+radical-1 owes you 200 GTC in test!
+user logged out successfully.you are now in login menu!
+user logged in successfully.you are now in dashboard!
+you owe mahmostash 200 GTC in test!
+expense added successfully!
+you are settled with mahmostash
+you are now in profile menu!
+username : moftkhor
+password : MoftKhor789!
+currency : GTC
+email : test3@sharif.edu
+name : parmida
+your currency changed to SUD successfully!
+username : moftkhor
+password : MoftKhor789!
+currency : SUD
+email : test3@sharif.edu
+name : parmida
+you are now in dashboard!
+expense added successfully!
+mahmostash owes you 200 SUD in test!
+user logged out successfully.you are now in login menu!
+user logged in successfully.you are now in dashboard!
+you owe moftkhor 100 GTC in test!
+group created successfully!
+user added to the group successfully!
+group name : test
+id : 1
+type : Zan-o-Bache
+creator : mahdyar
+members : 
+mahdyar
+parmida
+amirhossein
+--------------------
+group name : test2
+id : 2
+type : Home
+creator : mahdyar
+members : 
+mahdyar
+parmida
+--------------------
+expense added successfully!
+moftkhor owes you 100 GTC in test, test2!
+user logged out successfully.you are now in login menu!
+user logged in successfully.you are now in dashboard!
+you owe mahmostash 200 SUD in test, test2!
+you owe mahmostash 130 SUD now!
+user logged out successfully.you are now in login menu!
+user logged in successfully.you are now in dashboard!
+moftkhor owes you 65 GTC in test, test2!

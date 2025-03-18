@@ -1,0 +1,50 @@
+password format is invalid!
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+this username is already taken!
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+user registered successfully.you are now in login menu!
+username doesn't exist!
+password : NotValid@123
+user logged in successfully.you are now in dashboard!
+group type is invalid!
+group created successfully!
+group name : test
+id : 1
+type : Zan-o-Bache
+creator : mahdyar
+members : 
+mahdyar
+--------------------
+user added to the group successfully!
+group name : test
+id : 1
+type : Zan-o-Bache
+creator : mahdyar
+members : 
+mahdyar
+parmida
+--------------------
+user added to the group successfully!
+noooo not in group!
+expense added successfully!
+moftkhor owes you 200 GTC in test!
+radical-1 owes you 200 GTC in test!
+user logged out successfully.you are now in login menu!
+user logged in successfully.you are now in dashboard!
+invalid command!
+you owe mahmostash 200 GTC in test!
+user logged out successfully.you are now in login menu!
+user logged in successfully.you are now in dashboard!
+you are now in profile menu!
+username : radical-1
+password : IsValid@456
+currency : GTC
+email : test2@sharif.edu
+name : amirhossein
+you are now in dashboard!
+invalid command!
+you owe mahmostash 200 GTC in test!
+expense added successfully!
+mahmostash owes you 50 GTC in test!

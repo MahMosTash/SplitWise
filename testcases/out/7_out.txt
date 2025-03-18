@@ -1,0 +1,32 @@
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+user registered successfully.you are now in login menu!
+you are now in signup menu!
+user registered successfully.you are now in login menu!
+user logged in successfully.you are now in dashboard!
+invalid command!
+group created successfully!
+group created successfully!
+invalid command!
+group created successfully!
+user added to the group successfully!
+user added to the group successfully!
+user added to the group successfully!
+you are settled with radical-1
+expense added successfully!
+expense added successfully!
+radical-1 owes you 400 GTC in test1, test2, test3!
+radical-1 owes you 550 GTC now!
+user logged out successfully.you are now in login menu!
+user logged in successfully.you are now in dashboard!
+you owe mahmostash 550 GTC in test1, test2, test3!
+you are now in profile menu!
+currency format is invalid!
+your currency changed to QTR successfully!
+you are now in dashboard!
+you owe mahmostash 2750 QTR in test1, test2, test3!
+you owe mahmostash 2600 QTR now!
+you owe mahmostash 100 QTR now!
+user logged out successfully.you are now in login menu!
+user logged in successfully.you are now in dashboard!
+radical-1 owes you 20 GTC in test1, test2, test3!

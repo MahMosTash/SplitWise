@@ -1,0 +1,15 @@
+username format is invalid!
+username format is invalid!
+username format is invalid!
+password format is invalid!
+password format is invalid!
+password format is invalid!
+email format is invalid!
+email format is invalid!
+email format is invalid!
+email format is invalid!
+name format is invalid!
+name format is invalid!
+name format is invalid!
+user registered successfully.you are now in login menu!
+invalid command!
