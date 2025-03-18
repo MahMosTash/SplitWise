@@ -40,3 +40,4 @@ mahmostash 250
 radical-1 150
 moftkhor 200
 show balance -u mahmostash
+exit
