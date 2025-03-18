@@ -1,0 +1,137 @@
+register    -u    user1 -p User@1 -e user@gmail.com -n a
+go to signup menu
+register    -u    user2 -p User@1 -e user@gmail.com -n b
+go to signup menu
+register    -u    user3 -p User@1 -e user@gmail.com -n c
+go to signup menu
+register    -u    user4 -p User@1 -e user@gmail.com -n d
+go to signup menu
+register    -u    user5 -p User@1 -e user@gmail.com -n e
+go to signup menu
+register    -u    user6 -p User@1 -e user@gmail.com -n f
+go to signup menu
+register    -u    user7 -p User@1 -e user@gmail.com -n g
+go to signup menu
+register    -u    user8 -p User@1 -e user@gmail.com -n h
+go to signup menu
+register    -u    user9 -p User@1 -e user@gmail.com -n i
+go to signup menu
+register    -u    user10 -p User@1 -e user@gmail.com -n j
+go to login menu
+login    -u user1 -p User@1
+go to profile menu
+show user info
+change-username -n userr1
+change-username -n userr1
+change-username -n user1
+change-username -n user2
+change-password -o User -n User
+change-password -o User@1 -n User@1
+change-password -o User@1 -n User@2
+logout
+back
+logout
+login    -u user1 -p User@1
+login    -u user1 -p User@2
+logout
+forget-password -u user1 -e test
+forget-password -u userr1 -e user@gmail.com
+forget-password -u user1 -e user@gmail.com
+login    -u user1 -p User@2
+create-group tavalod tavalod tavalod tavalod tavalod tavalod tavalod tavalod
+create-group -n tavalod tavalod tavalod tavalod tavalod tavalod tavalod tavalod   -t Zon-o-Bache
+create-group -n tavalod tavalod   -t Zon-o-Bache
+create-group -n tavalod tavalod   -t Zan-o-Bache
+create-group -n safar mafar   -t Trip
+create-group -n dong khabgah   -t Home
+add-user -u user22 -e user@gmail.com -g 1
+add-user -u user2 -e user@gmail.com -g 11
+add-user -u user2 -e user@gmail.com -g -5
+add-user -u user2 -e user1@gmail.com -g 1
+add-user -u user2 -e user@gmail.com -g 1
+add-user -u user2 -e user@gmail.com -g 1
+add-user -u user3 -e user@gmail.com -g 1
+add-user -u user4 -e user@gmail.com -g 1
+add-user -u user5 -e user@gmail.com -g 1
+show my groups
+add-expense -g 2 -s equally -t 100 -n 5
+user1
+user2
+user3
+user4
+user5
+add-expense -g 1 -s equally -t 100 -n 5
+user1
+user2
+user3
+user4
+user6
+show balance -u user2
+add-expense -g 1 -s equally -t 100 -n 5
+user1
+user2
+user3
+user4
+user5
+show balance -u user2
+logout
+login    -u user2 -p User@1
+show my groups
+add-user -u user7 -e user@gmail.com -g 1
+show balance -u user1
+add-expense -g 1 -s equally -t hezar -n 2
+user1
+user2
+add-expense -g 1 -s equally -t 100 -n 2
+user1
+user2
+show balance -u user1
+add-expense -g 1 -s unequally -t 150 -n 3
+user1 30
+user2 60
+user3 50
+show balance -u user1
+add-expense -g 1 -s unequally -t 150 -n 3
+user1 30
+user2 60
+user3 60
+show balance -u user1
+logout
+login    -u user1 -p User@2
+show balance -u user2
+settle-up -u user20 -m -50
+settle-up -u user2 -m 50
+settle-up -u user2 -m 50
+logout
+go to signup menu
+register -u M@hdyar -p User@1 -e m@m.com -n -mahdyar
+register -u Mahdyar -p User1 -e m@m.com -n -mahdyar
+register -u Mahdyar -p User@1 -e m@m.com -n -mahdyar
+register -u Mahdyar -p User@1 -e m@mail.com -n -mahdyar
+register -u Mahdyar -p User@1 -e mahdyar@mail.com -n -mahdyar
+register -u Mahdyar -p User@1 -e mahdyar@mail.com -n mahdyar
+login    -u Mahdyar -p User@1
+create-group -n End -t Other
+create-group -n End!!!!!! -t Other
+show my groups
+add-user -u user1 -e user@gmail.com -g 4
+add-user -u user2 -e user@gmail.com -g 4
+add-user -u user3 -e user@gmail.com -g 4
+add-user -u user4 -e user@gmail.com -g 4
+add-user -u user5 -e user@gmail.com -g 4
+add-user -u user6 -e user@gmail.com -g 4
+add-user -u user7 -e user@gmail.com -g 4
+add-user -u user8 -e user@gmail.com -g 4
+add-user -u user9 -e user@gmail.com -g 4
+add-user -u user10 -e user@gmail.com -g 4
+show my groups
+logout
+login -u user1 -p User@2
+add-user -u Mahdyar -e mahdyar@mail.com -g 4
+add-user -u Mahdyar -e mahdyar@mail.com -g 1
+add-user -u Mahdyar -e mahdyar@mail.com -g 2
+add-user -u Mahdyar -e mahdyar@mail.com -g 3
+logout
+login    -u Mahdyar -p User@1
+show my groups
+exit

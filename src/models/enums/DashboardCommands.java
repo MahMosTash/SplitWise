@@ -5,7 +5,7 @@ public enum DashboardCommands implements Command {
     TYPE("(Home|Trip|Zan-o-Bache|Other)"),
     NAME("[a-zA-Z0-9!@#$%^&* ]{4,30}"),
     SHOW_MY_GROUPS("show\\s+my\\s+groups"),
-    ADD_USER("add-user\\s+-u\\s+(?<username>\\S+)\\s+-e\\s+(?<email>\\S+)\\s+-g\\s+(?<groupId>\\d+)"),
+    ADD_USER("add-user\\s+-u\\s+(?<username>\\S+)\\s+-e\\s+(?<email>\\S+)\\s+-g\\s+(?<groupId>-?\\d+)"),
     UNEQUAL("unequally"),
     ADD_EXPENSE("add-expense\\s+-g\\s+(?<groupId>\\d+)\\s+-s\\s+(?<split>equally|unequally)\\s+-t\\s+(?<totalExpense>\\S+)\\s+-n\\s+(?<numberOfUsers>\\d+)"),
     USER_INPUT_EXPENSE("(?<username>\\S+)(?:\\s(?<expense>\\d+))?"),

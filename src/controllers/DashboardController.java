@@ -71,7 +71,7 @@ public class DashboardController {
         if(!usernamesValidation.success()) {
             return usernamesValidation;
         }
-        if(!validateExpenses(users_expenses)) {
+        if(!validateExpenses(users_expenses, totalExpense)) {
             return new Result(false, "expense format is invalid!");
         }
         if(DashboardCommands.UNEQUAL.matches(split) && isSumValid(users_expenses, totalExpense)) {
@@ -95,19 +95,27 @@ public class DashboardController {
     }
 
     private static Result validateUsernames(ArrayList<Map<String, String>> users_expenses, Group group) {
+        StringBuilder stringBuilder = new StringBuilder();
         for(Map<String, String> user_expense : users_expenses) {
             String username = user_expense.keySet().iterator().next();
             User user = App.getUserByUsername(username);
             if(user == null) {
-                return new Result(false, username + " not in group!");
+                stringBuilder.append(username).append(" not in group!").append("\n");
             }
             if(!group.isUserInGroup(user)) {
-                return new Result(false, username + " not in group!");
+                stringBuilder.append(username).append(" not in group!").append("\n");
             }
+        }
+        if(!stringBuilder.isEmpty()) {
+            stringBuilder.deleteCharAt(stringBuilder.length()-1);
+            return new Result(false, stringBuilder.toString());
         }
         return new Result(true, "usernames are valid!");
     }
-    private static boolean validateExpenses(ArrayList<Map<String, String>> users_expenses) {
+    private static boolean validateExpenses(ArrayList<Map<String, String>> users_expenses, String totalExpense) {
+        if (!DashboardCommands.NUMBER.matches(totalExpense)) {
+            return false;
+        }
         for(Map<String, String> user_expense : users_expenses) {
             String expense = user_expense.values().iterator().next();
             if(!DashboardCommands.NUMBER.matches(expense)) {
