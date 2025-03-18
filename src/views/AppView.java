@@ -10,6 +10,6 @@ public class AppView {
         Scanner scanner = new Scanner(System.in);
         do {
             App.getCurrentMenu().checkCommand(scanner);
-        } while (scanner.hasNextLine() && App.getCurrentMenu() != Menu.Exit );
+        } while (App.getCurrentMenu() != Menu.Exit);
     }
 }

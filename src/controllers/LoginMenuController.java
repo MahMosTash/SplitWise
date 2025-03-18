@@ -10,12 +10,12 @@ public class LoginMenuController {
     public static Result login(String username, String password) {
         User user = App.getUserByUsername(username);
         if(user == null) {
-            return new Result(false, "usesrnanme doesn't exist!");
+            return new Result(false, "username doesn't exist!");
         } else if(!user.isPasswordCorrect(password)) {
             return new Result(false, "password is incorrect!");
         }
         App.setLoggedInUser(user);
-        return new Result(true, "user logged in successfully!");
+        return new Result(true, "user logged in successfully.you are now in dashboard!");
     }
     public static Result forgetPassword(String username, String email) {
         User user = App.getUserByUsername(username);
