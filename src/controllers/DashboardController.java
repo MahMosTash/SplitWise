@@ -218,7 +218,7 @@ public class DashboardController {
             group.removeExpense(App.getLoggedInUser(), user);
             group.removeExpense(user, App.getLoggedInUser());
         }
-        Group lastGroup = groups.getLast();
+        Group lastGroup = groups.get(groups.size() - 1);
         if(balance == 0) {
             return;
         }
